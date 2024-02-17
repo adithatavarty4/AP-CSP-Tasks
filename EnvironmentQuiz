@@ -1,0 +1,109 @@
+def Sustainability(place):
+    urban_tips = ["take more public transportation", "conserve water: Take shorter showers", "use energy efficient appliances", "participate in recycling programs across the city"  ]
+    rural_tips = ["start your own garden", "use composting methods", "support and buy from local farmers", "use natural resources with caution"]
+    suburban_tips = ["limit plastic bag production by carrying reusable bags", "use LED lightbulbs","shop at farmers market","use electric vehicles"]
+    while place != "q":
+        while place != "1" and place != "2" and place != "3":
+            print("Please put a correct number: ")
+            place = input("Do you live in an urban area, rural area, or suburban area: Enter 1 2 or 3. Press q to quit ")
+        if place == "1":
+            print("Here are some urban tips:")
+            print("_______________")
+            result = ",".join(urban_tips)
+            print(result)
+            
+        if place == "2":
+            print("Here are some rural tips:")
+            print("_______________")
+            result = ",".join(rural_tips)
+            print(result)
+            
+        if place == "3":
+            print("Here are some suburban tips: ")
+            print("_______________")
+            result = ",".join(suburban_tips)
+            print(result)
+        break
+    category_switch = input("If you want to switch to quiz mode, say y: anything else is quit ")
+    if category_switch.lower() == "y":
+        Quiz()
+    else:
+        print("Goodbye!!!")
+        exit()
+    return result 
+
+    
+def Quiz():
+    questions = [
+        ("What gas is the major cause for global warming?", ("A:Carbon Dioxide", "B: Oxygen", "C: Carbon Monoxide", "D: Nitrogen")),
+        ("What is the process of converting carbon dioxide to oxygen?" , ("A: Cellular Respiration", "B: Phylum", "C: Photosynthesis", "D: Xylem")),
+        ("What is the name of the layer that protects us from UV Rays, but now has holes in it because of greenhouse gases? " , ("A: Exosphere", "B: Mesopsphere", "C: Stratosphere", "D: Ozone Layer")),
+        ("What is the name of the agreement which promotes environmental sustainability? " , ("A: Treaty of Versailles", "B: Paris Climate Accord", "C: Brussels Climate Treaty", "D: Treaty of Hatfort")),
+        ("Which of the following is a renewable source of energy?", ("A: Oil", "B:Coal", "C:Wind", "D:Petroleum")),
+        ("Which of the following is  following a cause of deforestation?", ("A: urbanization", "B:Agriculture", "C:industrialization", "D:soil deprivation")),
+        ("Which of the following prevents air pollution?", ("A: Use bikes", "B:Utilizing Solar Power", "C:Planting Trees", "D:All of the Above")),
+        ("Which of the following causes climate change? ", ("A: Volcanoes", "B:Earthquakes", "C:Fossil Fuels", "D:All of the Above")),
+        ("Which of the following is a sustainable action?", ("A: Using disposable products", "B:burning e-waste", "C:burying plastic", "D:no recycling")),
+        ("Which of the reasons is why climate change is important?", ("A: extinction of species", "B:food shortages", "C:increased flooding", "D:All of the Above"))
+        ]
+    answers = ["A","C","D","B","C","B","D","C","A","D"]
+    correct = 0
+    incorrect = 0 
+    number = input("Please enter numbers from 1-10 to view that question or press q to quit: ")
+    if number.lower() == "q":
+        print("You didn't do any!!!")
+        category_choice = int(input("Do you want to learn about how you can be sustainable? Enter 1 for yes or 2 to completely quit the program: "))
+        if category_choice == 1:
+            place = input("Do you live in an urban area, rural area, or suburban area: Enter 1 2 or 3. Press q to quit:  ")
+            Sustainability(place)
+        else:
+            print("Goodbye")
+            exit()
+    while number.lower() != "q":
+        if int(number) <= 0 or int(number) > 10:
+            print("Choose in Range")
+            number = input("Please enter numbers from 1-10 to get that question or press q to quit: ")
+        else:
+            print(questions[int(number)-1][0])
+            choice = input(questions[int(number)-1][1][0] + " " + questions[int(number)-1][1][1] + " " + questions[int(number)-1][1][2] + " " + questions[int(number)-1][1][3] + " ") 
+            if choice.upper() == answers[int(number)-1]:
+                print("You are correct")
+                correct+=1
+            else: 
+                print("You are incorrect")
+                print("The correct answer is " + str(answers[int(number)-1]))
+                incorrect +=1
+            number = input("Please enter numbers from 1-10 to get that question or press q to quit. ")
+
+        
+        if number.lower() == "q":
+            total = correct + incorrect
+            print("Goodbye, You got " + str(correct) + " corect out of " + str(total) + " questions")
+            if correct/total >= 0.5:
+                print("You know some things about the environment. Good for you!!")
+            else:
+                print("Nice try, but I hope you can learn more by looking up yourself what the right answer is and read about it: ")
+            category_choice = int(input("Do you want to learn about how you can be sustainable? Enter 1 for yes or 2 to completely quit the program: "))
+            if category_choice == 1:
+                place = input("Do you live in an urban area, rural area, or suburban area: Enter 1 2 or 3. Press q to quit ")
+                Sustainability(place)
+            else:
+                print("Goodbye!")
+                exit()
+                   
+
+print("Hello: Welcome to Environmental Frenzy, where you can learn about the environment! ")
+print('__________________________________________________________________________________')
+category_number = input("Choose 1 or 2 to see the different categories you can choose from to learn more about the environment, and what you could do! q to quit: ")
+if category_number.lower() == "q":
+    print("Goodbye!")
+    exit()
+if category_number != "1" and category_number != "2":
+    print("Please put a correct number! ")
+    category_number = input("Choose 1 or 2 to see the different categories you can choose from to learn more about the environment, and what you could do! ")
+if category_number == "1":
+    print("Welcome to quiz: Make sure to do all 10 questions ")
+    Quiz()
+if category_number == "2":
+    place = input("Do you live in an urban area, rural area, or suburban area: Enter 1 2 or 3. Press q to quit ")
+    Sustainability(place)
