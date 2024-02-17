@@ -1,1 +1,69 @@
+questions = [
+        ("How do you write a print function on python?", ("A:print()", "B: print-", "C: printstatement", "D: printer()")),
+        ("17 with quotations around it is which type of data type?", ("A: boolean", "B: float", "C: string", "D: integer")),
+        ("When a digital attacker uses multiple computers to overload web traffic on a server, this is known as ...",("A: phishing scam ", "B: DDOS attack ", "C: router failure ", " D: printer()")),
+        ("What is 20 in binary?",("A: 10100 ", "B: 11001", "C: 10001", "D: 10110")), #a
+        ("If your message is encrypted using public key encryption it is _____ to crack",("A: impossible", "B: relatively easy", "C: computationally hard", "D: all of the above ")), #c
+        ("According to the domain name system (DNS), which of the following is a subdomain of the domain example.com?",("A: about.example.com", "B: example.uk", "C: example.com.org", "D: example/example.com")), #A
+        ("Which of the following is a set of 8 bits.",("A: megabyte", "B: terrabyte", "C: kilobyte", "D: byte")), #d
+        ("What is bandwidth?",("A: data gained ", "B: data lost", "C: amount of data a network can handle", "D: amount of time it takes for data to send ")),
+        ("What is an IP Address",("A: where the router lives ", "B: identifies each computer uniquely", "C: to help find cookies on a browser ", "D: helps locate many computers at once")),
+        ("What is 11001 in decimal",("A: 24", "B: 25", "C: 26", "D: 27 ")), #b
+        ("What is latency?",("A: finds IP Address and splits it ", "B: the charge of the packet ", "C: packet metadata", "D: amount of time it takes a packet to travel from one place to another")),
+        ("Hexadecimal is base ____",("A: 16 ", "B: 10 ", "C: 2", "D: 8")),
+        ("A single unit of information represented by a 1 or 0..",("A: byte", "B: bit", "C: boolean", "D: megabyte")),
+        ("A computer network is a system of:",("A: two or more computing devices connected to one another", "B: Data transfer and information storage", "C: Sharing devices like scanners ", "D: A whole lot of individual machines working on their own ")),
+        ("What is the purpose of DNS?",("A: It translates a website's domain name into its IP address.", "B: It gives you a domain name.", "C: It translates a website's IP address into its domain name.",
+                                        "D: It transfers information from a computer to another server.")),
+        ("What type of algorithm is an If statement?",("possible time", "B: iteration", "C: heuristic", "D: conditional")),
+        ("What does IP stand for in IP address?",("A: Internet Password", "B: Internet Protocol", "C: Internet Procedure", "D: Internet Policy ")),
+        ("Which of the following is NOT true about packets?",("A: Packets are numbered, so if they arrive out of order, the message can be reassembled.", "B: A message sent across the Internet can always be contained in a single packet."
+                                                              , "C: Packets are routed on different paths from sender to receiver.", "D: The receiver computer must confirm to the sending computer that each packet was received.")),
+        ("Which of the following best describes what happens when a new device is connected to the Internet?",("A: A device driver is assigned to the device.", "B: An Internet Protocol (IP) address is assigned to the device.",
+                                                                                                               "C: A packet number is assigned to the device.", "D: A web address is assigned to the device.")),
+        ("A list is written in python with which character?",("A: ()", "B: __", "C: {}", "D: [] "))
+          ]
+
+
+
+
+answers = ["A", "C", "B", "A", "C","A","D","C","B","B","D","A","B","A","A","D","B","B","B","D"]
+
+print("Hello and Welcome to AP CSP Flashcard Review Quiz")
+print("Please enter the letter of the multiple choice option you have selected.") 
+number = input("Please enter numbers from 1-20 to view that question or press q to quit. ")
+correct = 0
+incorrect = 0 
+while number != "q":
+    if int(number) <= 0 or int(number) > 20:
+        print("Choose in Range")
+        number = input("Please enter numbers from 1-20 to get that question or press q to quit. ")
+        
+    else:
+        print(questions[int(number)-1][0])
+        choice = input(questions[int(number)-1][1][0] + " " + questions[int(number)-1][1][1] + " " + questions[int(number)-1][1][2] + " " + questions[int(number)-1][1][3] + " ") 
+        if choice.upper() == answers[int(number)-1]:
+            print("You are correct")
+            correct+=1
+
+        else: 
+            print("You are incorrect")
+            incorrect +=1
+
+    
+
+        number = input("Please enter numbers from 1-20 to get that question or press q to quit. ")
+
+
+
+        
+    if number == "q":
+        total = correct + incorrect
+        print("Goodbye, You got " + str(correct) + " corect out of " + str(total) + " questions")
+        break
+    
+    
+        
+  
+    
 
