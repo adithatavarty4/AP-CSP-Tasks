@@ -1,0 +1,47 @@
+import random
+friends = []
+bestfriends = []
+x = input("Welcome! Please enter your friends' first name. Press d when you are done: ")
+if x=="d":
+    print("You have no friends!")
+else:
+    friends.append(x)
+    while x!="d":
+        x = input("Please enter your friends' first name. Press d when you are done: ")
+        if x =="d":
+            break
+        else:
+            friends.append(x)
+    print("You have " + str(len(friends)) + " friends.")
+    for i in range(len(friends)):
+        friends[i] = str(i+1) + ". " + friends[i]
+    print(*friends)
+    for i in range(len(friends)):
+        friends[i] = friends[i][3:]
+    if len(friends)==1:
+        print("You need at least one more friend: Still lonely: ")
+    else:
+        rand1 = random.sample(friends,2)
+        rand2 = str(rand1)[1:-1]
+        print(("These two have been randomly selected to go to the movies with you: " + rand2))
+        val = int(input("Enter the value to delete from Friend's List and put into Best Friend list: (Click 0 when done) "))
+    if val == 0:
+        print("You have no best friends")
+    else:
+        while val != 0:
+            if val > len(friends) or val <= 0:
+                print("Index out of range. Please enter a valid index.")
+                val = int(input("Enter the value to delete from Friend's List and put into Best Friend list: (Click 0 when done) "))
+                continue
+            val2 = val - 1
+            bestfriends.append(friends[val2])
+            val = int(input("Enter the value to delete from Friend's List and put into Best Friend list: (Click 0 when done) "))
+        for index in bestfriends:
+            if index in friends:
+                friends.remove(index)
+        for i in range(len(bestfriends)):
+            bestfriends[i] = str(i+1) + ". " + bestfriends[i]
+        for i in range(len(friends)):
+            friends[i] = str(i+1) + ". " + friends[i]
+        print("You're best friends are:", *bestfriends)
+        print("You're friends are:", *friends)
